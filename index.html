@@ -1,0 +1,2517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VISHWAJEET GAMING HUB</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --neon-cyan: #00f3ff;
+      --neon-blue: #0066ff;
+      --deep-navy: #030816;
+      --panel-bg: rgba(6, 17, 39, 0.85);
+      --border-glow: rgba(0, 243, 255, 0.4);
+      --gold: #ffd700;
+      --text: #e0f7ff;
+      --text-dim: #7da5c3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      background-color: var(--deep-navy);
+      background-image: 
+        radial-gradient(ellipse at 50% 0%, rgba(0, 243, 255, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(0, 102, 255, 0.12) 0%, transparent 50%),
+        linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 35px 35px, 35px 35px;
+      color: var(--text);
+      font-family: 'Rajdhani', sans-serif;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* =========================================
+       LANDING VIEW (HUB SELECTOR)
+       ========================================= */
+    #landing-view {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3.5rem 1.5rem 5rem;
+      max-width: 1250px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(0, 243, 255, 0.08);
+      border: 1px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      padding: 0.45rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.35);
+      margin-bottom: 1.5rem;
+    }
+
+    .badge .blink-dot {
+      width: 9px;
+      height: 9px;
+      background: var(--neon-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--neon-cyan);
+      animation: neonPulse 1.4s infinite alternate;
+    }
+
+    @keyframes neonPulse {
+      from { opacity: 0.4; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1.15); box-shadow: 0 0 16px var(--neon-cyan); }
+    }
+
+    .hub-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: 4px;
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 
+        0 0 10px var(--neon-cyan),
+        0 0 25px rgba(0, 243, 255, 0.7),
+        0 0 50px rgba(0, 102, 255, 0.5);
+    }
+
+    .hub-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-dim);
+      text-align: center;
+      max-width: 700px;
+      margin-bottom: 3.5rem;
+      letter-spacing: 1px;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .game-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-glow);
+      border-radius: 14px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 243, 255, 0.35);
+    }
+
+    .game-card.highlighted {
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.35), inset 0 0 15px rgba(255, 215, 0, 0.1);
+      background: linear-gradient(145deg, rgba(16, 28, 56, 0.95), rgba(7, 18, 38, 0.95));
+    }
+
+    .game-card.highlighted:hover {
+      transform: translateY(-10px);
+      border-color: #fff;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 215, 0, 0.6);
+    }
+
+    .best-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: linear-gradient(90deg, #ff9900, #ffd700);
+      color: #030816;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .pass-note {
+      display: inline-block;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: rgba(255, 215, 0, 0.15);
+      border: 1px dashed var(--gold);
+      color: var(--gold);
+      font-size: 0.88rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .card-icon {
+      font-size: 2.8rem;
+      margin-bottom: 1.2rem;
+      display: inline-block;
+    }
+
+    .card-genre {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--neon-cyan);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.7rem;
+      letter-spacing: 1px;
+    }
+
+    .card-desc {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+    }
+
+    .play-btn {
+      width: 100%;
+      padding: 0.9rem;
+      background: rgba(0, 243, 255, 0.1);
+      border: 1px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      border-radius: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+    }
+
+    .game-card:hover .play-btn {
+      background: var(--neon-cyan);
+      color: var(--deep-navy);
+      box-shadow: 0 0 20px var(--neon-cyan);
+    }
+
+    .game-card.highlighted .play-btn {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .game-card.highlighted:hover .play-btn {
+      background: var(--gold);
+      color: var(--deep-navy);
+      box-shadow: 0 0 25px var(--gold);
+    }
+
+    /* =========================================
+       ARENA VIEW (FULLSCREEN FIX)
+       ========================================= */
+    #arena-view {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #030816;
+      flex-direction: column;
+      z-index: 9999;
+    }
+
+    .arena-bar {
+      background: rgba(3, 8, 22, 0.98);
+      border-bottom: 1px solid var(--neon-cyan);
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+      padding: 0.6rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+      min-height: 60px;
+    }
+
+    .arena-left {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .back-btn {
+      background: rgba(0, 243, 255, 0.1);
+      border: 1px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      padding: 0.5rem 1.1rem;
+      border-radius: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      background: var(--neon-cyan);
+      color: var(--deep-navy);
+      box-shadow: 0 0 15px var(--neon-cyan);
+    }
+
+    .arena-title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #fff;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    .car-pass-banner {
+      display: none;
+      background: rgba(255, 215, 0, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 4px 10px;
+      border-radius: 5px;
+      font-size: 0.82rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .switcher {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .switch-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 243, 255, 0.2);
+      color: var(--text-dim);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .switch-btn:hover {
+      color: #fff;
+      border-color: var(--neon-cyan);
+    }
+
+    .switch-btn.active {
+      background: var(--neon-cyan);
+      border-color: var(--neon-cyan);
+      color: var(--deep-navy);
+      box-shadow: 0 0 12px var(--neon-cyan);
+    }
+
+    .arena-frame-wrap {
+      flex: 1 1 0%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      flex: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem 1rem;
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================
+       PAGE 1: SELECTION MENU (DEFAULT)
+       ========================================= -->
+  <div id="landing-view">
+    <div class="badge">
+      <span class="blink-dot"></span>
+      CYBER PROTOCOL ONLINE
+    </div>
+
+    <h1 class="hub-title">VISHWAJEET GAMING HUB</h1>
+    <p class="hub-subtitle">
+      Select a game to start playing. Games only run when selected.
+    </p>
+
+    <div class="game-grid">
+      <!-- 1. HIGHLIGHTED BEST: 3D CAR GAME -->
+      <div class="game-card highlighted" onclick="openGame('car3d')">
+        <span class="best-badge">★ BEST GAME [WINDOWS only]</span>
+        <div>
+          <span class="card-icon">🏎️</span>
+          <div class="card-genre" style="color: var(--gold);">3D Simulation & Audio Engine</div>
+          <h2 class="card-title" style="color: var(--gold);">3D CAR GAME</h2>
+          <p class="card-desc">360° showroom, supercar tiers, day/night modes, audio synthesizers, and security lock.</p>
+          <div class="pass-note">🔐 IF IT ASKS FOR PASSWORD, ENTER: 2012</div>
+        </div>
+        <button class="play-btn">Launch Simulator ▶</button>
+      </div>
+
+      <!-- 2. 2048 Game -->
+      <div class="game-card" onclick="openGame('game2048')">
+        <div>
+          <span class="card-icon">🔢</span>
+          <div class="card-genre">Puzzle & Math</div>
+          <h2 class="card-title">2048 Game</h2>
+          <p class="card-desc">Slide and combine identical tiles across a 4x4 grid with keyboard arrows or swipe gestures.</p>
+        </div>
+        <button class="play-btn">Play 2048 ▶</button>
+      </div>
+
+      <!-- 3. Dino Game -->
+      <div class="game-card" onclick="openGame('dino')">
+        <div>
+          <span class="card-icon">🦖</span>
+          <div class="card-genre">Runner</div>
+          <h2 class="card-title">Dino Runner</h2>
+          <p class="card-desc">Press Space or Up Arrow to jump over obstacles and survive as speed increases.</p>
+        </div>
+        <button class="play-btn">Play Dino Game ▶</button>
+      </div>
+
+      <!-- 4. Flappy Ball -->
+      <div class="game-card" onclick="openGame('flappy')">
+        <div>
+          <span class="card-icon">🐤</span>
+          <div class="card-genre">Arcade</div>
+          <h2 class="card-title">Flappy Ball</h2>
+          <p class="card-desc">Basic Flappy Clone (Easy Mode). Press Space or Click to flap between pipes.</p>
+        </div>
+        <button class="play-btn">Play Flappy Ball ▶</button>
+      </div>
+
+      <!-- 5. Whack-A-Mole -->
+      <div class="game-card" onclick="openGame('hamster')">
+        <div>
+          <span class="card-icon">🐹</span>
+          <div class="card-genre">Reflex</div>
+          <h2 class="card-title">Whack-A-Mole</h2>
+          <p class="card-desc">3x3 Whack-A-Mole game. Use number keys 1 through 9 to tap the moles!</p>
+        </div>
+        <button class="play-btn">Play Whack-A-Mole ▶</button>
+      </div>
+
+      <!-- 6. NIM Game -->
+      <div class="game-card" onclick="openGame('nim')">
+        <div>
+          <span class="card-icon">🧠</span>
+          <div class="card-genre">Logic & Strategy</div>
+          <h2 class="card-title">NIM GAME</h2>
+          <p class="card-desc">Strategic Binary Logic Simulation derived from Python. Play against Perfect or Amateur AI.</p>
+        </div>
+        <button class="play-btn">Play NIM Game ▶</button>
+      </div>
+
+      <!-- 7. Tic Tac Toe -->
+      <div class="game-card" onclick="openGame('tictactoe')">
+        <div>
+          <span class="card-icon">❌⭕</span>
+          <div class="card-genre">Board Game</div>
+          <h2 class="card-title">Tic Tac Toe</h2>
+          <p class="card-desc">Classic 3x3 2-player turn-based Tic Tac Toe with automatic win checking.</p>
+        </div>
+        <button class="play-btn">Play Tic Tac Toe ▶</button>
+      </div>
+    </div>
+
+    <footer>
+      ⚡ VISHWAJEET GAMING HUB • ALL SYSTEMS READY ⚡
+    </footer>
+  </div>
+
+  <!-- =========================================
+       PAGE 2: LIVE ARENA (FIXED FULL SCREEN)
+       ========================================= -->
+  <div id="arena-view">
+    <div class="arena-bar">
+      <div class="arena-left">
+        <button class="back-btn" onclick="backToHub()">← GAME HUB</button>
+        <span class="arena-title" id="active-title">READY</span>
+        <span id="car-pass-reminder" class="car-pass-banner">PASSWORD: 2012</span>
+      </div>
+
+      <div class="switcher">
+        <button class="switch-btn" data-game="car3d" onclick="openGame('car3d')">🏎️ 3D Car (Best)</button>
+        <button class="switch-btn" data-game="game2048" onclick="openGame('game2048')">🔢 2048</button>
+        <button class="switch-btn" data-game="dino" onclick="openGame('dino')">🦖 Dino Runner</button>
+        <button class="switch-btn" data-game="flappy" onclick="openGame('flappy')">🐤 Flappy Ball</button>
+        <button class="switch-btn" data-game="hamster" onclick="openGame('hamster')">🐹 Whack-A-Mole</button>
+        <button class="switch-btn" data-game="nim" onclick="openGame('nim')">🧠 NIM Game</button>
+        <button class="switch-btn" data-game="tictactoe" onclick="openGame('tictactoe')">❌⭕ Tic Tac Toe</button>
+      </div>
+    </div>
+
+    <div class="arena-frame-wrap">
+      <iframe id="game-frame" title="Active Game" sandbox="allow-scripts allow-modals allow-same-origin"></iframe>
+    </div>
+  </div>
+
+  <script>
+    const gamesData = {
+      // 1. HIGHLIGHTED BEST: YOUR EXACT "3D CAR GAME.html" (PASSWORD PRESET TO 2012)
+      car3d: {
+        title: "3D CAR GAME (★ BEST GAME)",
+        isCar: true,
+        html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D CAR GAME</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #000; font-family: 'Orbitron', sans-serif; }
+        #ui { position: absolute; top: 20px; left: 20px; color: #fff; pointer-events: none; z-index: 5; display: none; }
+        .stat { font-size: 18px; color: #00ffcc; font-weight: bold; margin-bottom: 5px; text-shadow: 0 0 10px #00ffcc; }
+        #speed-val { font-size: 45px; color: #ff0055; font-style: italic; text-shadow: 0 0 15px #ff0055; }
+        
+        .overlay {
+            position: absolute; width: 100%; height: 100%; 
+            background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 100%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 40;
+        }
+        #garage-overlay, #time-overlay { display: none; justify-content: space-between; padding: 60px 0; box-sizing: border-box; }
+        .card-container { display: flex; gap: 15px; z-index: 50; }
+        .card {
+            padding: 12px 20px; border: 2px solid #333; color: #fff; cursor: pointer; transition: 0.15s;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); font-size: 12px;
+        }
+        .card:hover { border-color: #ffffff; background: rgba(255,255,255,0.1); transform: scale(1.05); }
+        .card.active { border-color: #00ffcc; color: #00ffcc; box-shadow: 0 0 20px #00ffcc; transform: scale(1.1); }
+        
+        .neon-btn {
+            padding: 20px 50px; font-size: 22px; font-family: 'Orbitron', sans-serif;
+            background: rgba(0,0,0,0.8); color: #00ffcc; border: 2px solid #00ffcc;
+            cursor: pointer; text-transform: uppercase; letter-spacing: 4px; box-shadow: 0 0 15px #00ffcc; z-index: 50;
+            transition: 0.2s;
+        }
+        .neon-btn:hover { background: #00ffcc; color: #000; transform: translateY(-3px); }
+
+        #msg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ff0055; text-align: center; display: none; z-index: 100; background: rgba(0,0,0,0.95); padding: 60px; border: 4px solid #ff0055; }
+
+        /* --- NEW SETTINGS & PASSWORD UI --- */
+        #settings-icon {
+            position: absolute; top: 20px; right: 20px; color: #00ffcc; font-size: 30px;
+            cursor: pointer; z-index: 1000; text-shadow: 0 0 10px #00ffcc; transition: 0.3s;
+        }
+        #settings-icon:hover { transform: rotate(90deg); color: #fff; }
+
+        .pass-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98); display: flex; flex-direction: column;
+            align-items: center; justify-content: center; z-index: 2000;
+        }
+        .pass-input {
+            background: transparent; border: none; border-bottom: 2px solid #00ffcc;
+            color: #fff; font-family: 'Orbitron', sans-serif; font-size: 32px;
+            text-align: center; letter-spacing: 10px; width: 220px; margin: 25px 0; outline: none;
+        }
+        #settings-menu { display: none; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="settings-icon" title="Security Settings">⚙️</div>
+
+    <div id="lock-screen" class="pass-overlay">
+        <h1 style="color:white; letter-spacing: 12px; font-size: 24px;">ENCRYPTED ACCESS</h1>
+        <input type="password" id="pass-entry" class="pass-input" placeholder="••••" maxlength="6">
+        <p id="lock-msg" style="color:#ff0055; height: 20px;"></p>
+        <button class="neon-btn" id="unlock-btn">UNLOCK ENGINE</button>
+    </div>
+
+    <div id="settings-menu" class="pass-overlay">
+        <h2 style="color:white; letter-spacing: 5px;">SECURITY PROTOCOL</h2>
+        <div style="margin: 20px; color: #00ffcc; font-size: 14px;">
+            SYSTEM LOCK: <span id="lock-status-label" style="color: #fff;">OFF</span>
+        </div>
+        <button class="card" id="toggle-lock-btn" style="width:250px; margin-bottom:10px;">ENABLE LOCK</button>
+        <button class="card" id="change-pass-btn" style="width:250px;">CHANGE 4/6 DIGIT PIN</button>
+        <button class="neon-btn" style="margin-top:40px; padding:10px 30px; font-size: 14px;" id="close-settings-btn">EXIT SETTINGS</button>
+    </div>
+
+    <div id="start-screen" class="overlay" style="display:none;">
+        <h1 style="color:white; font-size: 50px; letter-spacing: 12px; text-shadow: 0 0 20px #00ffcc;">NEON DRIVE</h1>
+        <button class="neon-btn" id="init-btn">START ENGINE</button>
+    </div>
+
+    <div id="garage-overlay" class="overlay">
+        <h2 style="color:white; letter-spacing: 8px;">360° SHOWROOM</h2>
+        <div style="flex-grow: 1;"></div>
+        <div class="card-container">
+            <div class="card active" data-car="0">TAATA NUNO</div>
+            <div class="card" data-car="1">MORUTI SUZOKU</div>
+            <div class="card" data-car="2">AOUDI</div>
+            <div class="card" data-car="3">MORSUDEES</div>
+            <div class="card" data-car="4">LOMBURGONEE</div>
+        </div>
+        <button class="neon-btn" style="margin-top:20px;" id="to-time-btn">SELECT TIME</button>
+    </div>
+
+    <div id="time-overlay" class="overlay">
+        <h2 style="color:white; letter-spacing: 8px;">ENVIRONMENT</h2>
+        <div style="flex-grow: 1;"></div>
+        <div class="card-container">
+            <div class="card active" data-time="day">DAY MODE</div>
+            <div class="card" data-time="night">NIGHT MODE</div>
+        </div>
+        <button class="neon-btn" style="margin-top:20px;" id="engage-btn">ENGAGE DRIVE</button>
+    </div>
+
+    <div id="ui">
+        <div class="stat">SCORE: <span id="score">0</span></div>
+        <div class="stat">SPEED: <span id="speed-val">0</span> <small>KM/H</small></div>
+    </div>
+    <div id="msg"><h1>WASTED</h1><p style="color:white">PRESS <b>'R'</b> TO RESPAWN</p></div>
+
+    <script type="importmap">{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }<\/script>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        // --- PASSWORD SYSTEM STATE (DEFAULT SET TO 2012) ---
+        let currentPass = localStorage.getItem('nd_pass') || "2012";
+        let isLockEnabled = localStorage.getItem('nd_locked') === 'true';
+
+        // --- AUDIO ENGINE ---
+        let audioCtx, engineOsc, engineGain, windGain, carTier = 0;
+        
+        const initAudio = () => {
+            if (audioCtx) return;
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            engineOsc = audioCtx.createOscillator();
+            engineGain = audioCtx.createGain();
+            engineOsc.type = 'sawtooth';
+            engineOsc.connect(engineGain);
+            engineGain.connect(audioCtx.destination);
+            engineGain.gain.value = 0;
+            engineOsc.start();
+            const bufferSize = 2 * audioCtx.sampleRate, noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate), output = noiseBuffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) output[i] = Math.random() * 2 - 1;
+            const whiteNoise = audioCtx.createBufferSource();
+            whiteNoise.buffer = noiseBuffer; whiteNoise.loop = true;
+            windGain = audioCtx.createGain(); windGain.gain.value = 0;
+            whiteNoise.connect(windGain); windGain.connect(audioCtx.destination);
+            whiteNoise.start();
+        };
+
+        const playPopSfx = (freq = 600) => {
+            if(!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(freq/2, audioCtx.currentTime + 0.1);
+            osc.connect(g); g.connect(audioCtx.destination);
+            g.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.15);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.15);
+        };
+
+        const playConfirmSfx = () => {
+            if(!audioCtx) return;
+            const t = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(300, t);
+            osc.frequency.exponentialRampToValueAtTime(900, t + 0.2);
+            osc.connect(g); g.connect(audioCtx.destination);
+            g.gain.setValueAtTime(0.2, t);
+            g.gain.exponentialRampToValueAtTime(0.0001, t + 0.25);
+            osc.start(); osc.stop(t + 0.3);
+        };
+
+        function playStartJingle() {
+            const t = audioCtx.currentTime;
+            const notes = [440, 554, 659, 880]; 
+            notes.forEach((f, i) => {
+                const osc = audioCtx.createOscillator();
+                const g = audioCtx.createGain();
+                osc.type = i === 3 ? 'square' : 'triangle';
+                osc.frequency.setValueAtTime(f, t + (i * 0.25));
+                osc.connect(g); g.connect(audioCtx.destination);
+                g.gain.setValueAtTime(0, t + (i * 0.25));
+                g.gain.linearRampToValueAtTime(0.1, t + (i * 0.25) + 0.05);
+                g.gain.exponentialRampToValueAtTime(0.0001, t + (i * 0.25) + 0.4);
+                osc.start(t + (i * 0.25)); osc.stop(t + (i * 0.25) + 0.5);
+            });
+        }
+
+        // --- GAME LOGIC ---
+        let scene, camera, renderer, playerCar, wheels = [], skyObjects = new THREE.Group();
+        let speed = 0, score = 0, turnX = 0, isDead = false, gameStarted = false, inGarage = false;
+        let roadSegments = [], obstacles = [];
+        const keys = {};
+
+        // Navigation Flow
+        const flow = (step) => {
+            document.querySelectorAll('.overlay').forEach(o => o.style.display = 'none');
+            if(step === 'garage') { document.getElementById('garage-overlay').style.display = 'flex'; inGarage = true; }
+            else if(step === 'time') { document.getElementById('time-overlay').style.display = 'flex'; }
+        };
+
+        // --- PASSWORD SYSTEM EVENTS ---
+        const checkAccess = () => {
+            const val = document.getElementById('pass-entry').value;
+            if (val === currentPass) {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('start-screen').style.display = 'flex';
+                initAudio();
+            } else {
+                document.getElementById('lock-msg').innerText = "ACCESS DENIED";
+                document.getElementById('pass-entry').value = "";
+                setTimeout(() => { document.getElementById('lock-msg').innerText = ""; }, 2000);
+            }
+        };
+
+        const updateSettingsUI = () => {
+            document.getElementById('lock-status-label').innerText = isLockEnabled ? "ENABLED" : "DISABLED";
+            document.getElementById('toggle-lock-btn').innerText = isLockEnabled ? "TURN OFF LOCK" : "TURN ON LOCK";
+        };
+
+        // Event Listeners for Password/Settings
+        document.getElementById('unlock-btn').addEventListener('click', checkAccess);
+        document.getElementById('settings-icon').addEventListener('click', () => {
+            document.getElementById('settings-menu').style.display = 'flex';
+        });
+        document.getElementById('close-settings-btn').addEventListener('click', () => {
+            document.getElementById('settings-menu').style.display = 'none';
+        });
+        document.getElementById('toggle-lock-btn').addEventListener('click', () => {
+            isLockEnabled = !isLockEnabled;
+            localStorage.setItem('nd_locked', isLockEnabled);
+            updateSettingsUI();
+            playPopSfx(400);
+        });
+        document.getElementById('change-pass-btn').addEventListener('click', () => {
+            const p = prompt("Enter new 4 or 6 digit PIN:");
+            if(p && (p.length === 4 || p.length === 6) && !isNaN(p)) {
+                currentPass = p;
+                localStorage.setItem('nd_pass', p);
+                alert("Security PIN updated!");
+            } else {
+                alert("Invalid PIN. Must be 4 or 6 numbers.");
+            }
+        });
+
+        // Initialize Lock on Load
+        if(!isLockEnabled) {
+            document.getElementById('lock-screen').style.display = 'none';
+            document.getElementById('start-screen').style.display = 'flex';
+        }
+        updateSettingsUI();
+
+        // Game UI Buttons
+        document.getElementById('init-btn').addEventListener('click', () => { initAudio(); playConfirmSfx(); flow('garage'); });
+        document.getElementById('to-time-btn').addEventListener('click', () => { playConfirmSfx(); flow('time'); });
+        document.getElementById('engage-btn').addEventListener('click', () => { 
+            playStartJingle();
+            document.querySelectorAll('.overlay').forEach(o => o.style.display = 'none');
+            document.getElementById('ui').style.display = 'block';
+            inGarage = false; gameStarted = true;
+        });
+
+        document.querySelectorAll('#garage-overlay .card').forEach(card => {
+            card.addEventListener('click', () => {
+                const tier = parseInt(card.dataset.car);
+                playPopSfx(800 + (tier * 100));
+                carTier = tier;
+                document.querySelectorAll('#garage-overlay .card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                buildSupercar(tier);
+            });
+        });
+
+        document.querySelectorAll('#time-overlay .card').forEach(card => {
+            card.addEventListener('click', () => {
+                playPopSfx(1000);
+                document.querySelectorAll('#time-overlay .card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                setEnvironment(card.dataset.time);
+            });
+        });
+
+        // --- THREE.JS ENGINE ---
+        init(); animate();
+
+        function init() {
+            scene = new THREE.Scene();
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 3000);
+            scene.add(skyObjects);
+            const sunLight = new THREE.DirectionalLight(0xffffff, 3);
+            sunLight.position.set(10, 50, 10); sunLight.name = "mainLight";
+            scene.add(sunLight); scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+            playerCar = new THREE.Group(); scene.add(playerCar);
+            buildSupercar(0); setEnvironment('day');
+            for(let i=0; i<60; i++) createSegment(i * 20);
+            window.addEventListener('keydown', (e) => { keys[e.code] = true; if(e.code === 'KeyR' && isDead) location.reload(); });
+            window.addEventListener('keyup', (e) => { keys[e.code] = false; });
+        }
+
+        function setEnvironment(mode) {
+            while(skyObjects.children.length > 0) skyObjects.remove(skyObjects.children[0]);
+            const light = scene.getObjectByName("mainLight");
+            if(mode === 'day') {
+                scene.background = new THREE.Color(0x55aaff); light.intensity = 3;
+                const sun = new THREE.Mesh(new THREE.SphereGeometry(6, 32, 32), new THREE.MeshBasicMaterial({ color: 0xffdd44 }));
+                sun.position.set(50, 80, 150); skyObjects.add(sun);
+                const mountainMat = new THREE.MeshStandardMaterial({ color: 0x445566, roughness: 0.9 });
+                [[1000, -300, 300, 400], [900, -100, 350, 450], [950, 150, 280, 350]].forEach(m => {
+                    const mt = new THREE.Mesh(new THREE.ConeGeometry(m[3], m[2], 8), mountainMat);
+                    mt.position.set(m[1], m[2]/2 - 10, m[0]); skyObjects.add(mt);
+                });
+            } else {
+                scene.background = new THREE.Color(0x010103); light.intensity = 0.6;
+                const moon = new THREE.Mesh(new THREE.SphereGeometry(5, 32, 32), new THREE.MeshBasicMaterial({ color: 0xdddddd }));
+                moon.position.set(-50, 80, 150); skyObjects.add(moon);
+                for(let i=0; i<300; i++) {
+                    const star = new THREE.Mesh(new THREE.SphereGeometry(0.15), new THREE.MeshBasicMaterial({color: 0xffffff}));
+                    star.position.set(Math.random()*600-300, Math.random()*300, Math.random()*600-300);
+                    skyObjects.add(star);
+                }
+            }
+        }
+
+        function buildSupercar(level) {
+            while(playerCar.children.length > 0) playerCar.remove(playerCar.children[0]);
+            wheels = [];
+            const bodyMat = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.9, roughness: 0.1 });
+            const trimMat = new THREE.MeshStandardMaterial({ color: 0x111111 });
+            const neonMat = new THREE.MeshBasicMaterial({ color: 0x00ffcc });
+            const chassis = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.5, 5), bodyMat);
+            chassis.position.y = 0.5; playerCar.add(chassis);
+            if(level >= 1) { const cock = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.7, 1.8), trimMat); cock.position.set(0, 1, -0.4); playerCar.add(cock); }
+            if(level >= 2) { const wing = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.1, 0.9), bodyMat); wing.position.set(0, 1.2, -2.2); playerCar.add(wing); }
+            if(level >= 3) { const neon = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 4.8), neonMat); neon.rotation.x = -Math.PI/2; neon.position.y = 0.05; playerCar.add(neon); }
+            if(level >= 4) {
+                const sR = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.8, 3.5), bodyMat); sR.position.set(1.3, 0.6, -0.5); playerCar.add(sR);
+                const sL = sR.clone(); sL.position.x = -1.3; playerCar.add(sL);
+                const m = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.1, 0.2), bodyMat); m.position.set(1.2, 1.2, 0.6); playerCar.add(m);
+                const mL = m.clone(); mL.position.x = -1.2; playerCar.add(mL);
+            }
+            const wheelGeo = new THREE.CylinderGeometry(0.45, 0.45, 0.4, 20); wheelGeo.rotateZ(Math.PI/2);
+            [[-1.1, 0.45, 1.6], [1.1, 0.45, 1.6], [-1.1, 0.45, -1.6], [1.1, 0.45, -1.6]].forEach(p => {
+                const w = new THREE.Mesh(wheelGeo, trimMat); w.position.set(p[0], p[1], p[2]);
+                playerCar.add(w); wheels.push(w);
+            });
+        }
+
+        function createSegment(zPos) {
+            const group = new THREE.Group(); group.position.z = zPos;
+            const road = new THREE.Mesh(new THREE.PlaneGeometry(16, 20.1), new THREE.MeshStandardMaterial({ color: 0x111111 }));
+            road.rotation.x = -Math.PI/2; group.add(road);
+            for(let s = 0; s < 4; s++) {
+                const col = (s % 2 === 0) ? 0xffffff : 0xaaaaaa;
+                const curbL = new THREE.Mesh(new THREE.BoxGeometry(4, 0.8, 5), new THREE.MeshStandardMaterial({ color: col }));
+                curbL.position.set(-10, 0.4, -7.5 + (s * 5)); group.add(curbL);
+                const curbR = curbL.clone(); curbR.position.x = 10; group.add(curbR);
+            }
+            for(let i=0; i<2; i++) {
+                const x = (22 + Math.random() * 5) * (i % 2 === 0 ? 1 : -1);
+                const treeGroup = new THREE.Group(); treeGroup.position.set(x, 0, 0);
+                const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.4, 2.5), new THREE.MeshStandardMaterial({color: 0x3d2b1f}));
+                trunk.position.y = 1.25; treeGroup.add(trunk);
+                const pineMat = new THREE.MeshStandardMaterial({color: 0x0d3b0d, emissive: 0x021102});
+                for(let l=0; l<3; l++){
+                    const layer = new THREE.Mesh(new THREE.ConeGeometry(2.5-l*0.6, 3.5-l*0.5, 8), pineMat);
+                    layer.position.y = 3.5 + l*2; treeGroup.add(layer);
+                }
+                group.add(treeGroup);
+            }
+            if(zPos > 250 && Math.random() < 0.2) {
+                const obs = new THREE.Mesh(new THREE.BoxGeometry(2.5, 2.5, 2.5), new THREE.MeshStandardMaterial({color: 0xff0044, emissive: 0x330000}));
+                obs.position.set((Math.random()-0.5)*13, 1.25, 0); group.add(obs); obstacles.push(obs);
+            }
+            scene.add(group); roadSegments.push(group);
+        }
+
+        function update() {
+            if(isDead || !gameStarted) {
+                if(engineGain) engineGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.1);
+                if(inGarage) playerCar.rotation.y += 0.015;
+                return;
+            }
+
+            if (keys['KeyW'] || keys['ArrowUp']) speed += 0.05;
+            if (keys['KeyS'] || keys['ArrowDown']) speed -= 0.5;
+            speed = Math.max(0, Math.min(speed, 14)) * 0.992;
+            if (keys['KeyD'] || keys['ArrowRight']) turnX -= 0.05;
+            if (keys['KeyA'] || keys['ArrowLeft']) turnX += 0.05;
+            playerCar.position.x += turnX; playerCar.position.z += speed;
+            playerCar.rotation.z = 0; playerCar.rotation.y = 0; turnX *= 0.85;
+
+            if(audioCtx) {
+                const baseFreq = [50, 60, 70, 85, 120][carTier];
+                const pitchMult = [1, 1.2, 1.5, 2.5, 4][carTier];
+                engineOsc.frequency.setTargetAtTime(baseFreq + (speed * 15 * pitchMult), audioCtx.currentTime, 0.1);
+                engineGain.gain.setTargetAtTime(0.15, audioCtx.currentTime, 0.1);
+                windGain.gain.setTargetAtTime(speed * 0.015, audioCtx.currentTime, 0.1);
+            }
+
+            skyObjects.position.z = playerCar.position.z;
+            wheels.forEach(w => w.rotation.x += speed * 0.4);
+            roadSegments.forEach(seg => {
+                if (playerCar.position.z - seg.position.z > 40) {
+                    seg.position.z = roadSegments[roadSegments.length-1].position.z + 20;
+                    roadSegments.shift(); roadSegments.push(seg);
+                }
+            });
+
+            const pBox = new THREE.Box3().setFromObject(playerCar);
+            for(let obs of obstacles) {
+                if(pBox.intersectsBox(new THREE.Box3().setFromObject(obs))) {
+                    isDead = true; 
+                    if(audioCtx) {
+                        const crash = audioCtx.createOscillator();
+                        const cg = audioCtx.createGain();
+                        crash.type = 'sawtooth'; crash.frequency.setValueAtTime(80, audioCtx.currentTime);
+                        crash.connect(cg); cg.connect(audioCtx.destination);
+                        cg.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                        cg.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
+                        crash.start(); crash.stop(audioCtx.currentTime + 0.5);
+                    }
+                }
+            }
+            if(Math.abs(playerCar.position.x) > 7.8) isDead = true;
+            if(isDead) document.getElementById('msg').style.display = 'block';
+
+            score += Math.floor(speed);
+            document.getElementById('score').innerText = score;
+            document.getElementById('speed-val').innerText = Math.floor(speed * 18);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            update();
+            if(inGarage && !gameStarted) {
+                camera.position.set(6, 4, playerCar.position.z + 10);
+                camera.lookAt(playerCar.position.x, 1, playerCar.position.z);
+            } else if(gameStarted) {
+                camera.position.lerp(new THREE.Vector3(playerCar.position.x, 6, playerCar.position.z - 12), 0.1);
+                camera.lookAt(playerCar.position.x, 1, playerCar.position.z + 10);
+            }
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    <\/script>
+</body>
+</html>`
+      },
+
+      // 2. YOUR EXACT "2048 game.html"
+      game2048: {
+        title: "2048 Game",
+        html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Game</title>
+    <style>
+        :root {
+            --background-color: #ffbf6b;
+            --grid-color: #2ef8d6;
+            --font-color: #b95de4;
+            --tile-2-bg: #0740618e;
+            --tile-4-bg: #fc891e;
+            --tile-8-bg: #fff064;
+            --tile-16-bg: #f8fc07;
+            --tile-32-bg: #04f741;
+            --tile-64-bg: #007200;
+            --tile-128-bg: #0be0ab;
+            --tile-256-bg: #00d9ff;
+            --tile-512-bg: #001aff;
+            --tile-1024-bg: #ff00ea;
+            --tile-2048-bg: #ff0000;
+            --dark-text: #000000;
+            --light-text: #bbbab9;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--font-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        .score-container {
+            font-size: 1.5em;
+            font-weight: bold;
+            background-color: var(--grid-color);
+            color: var(--light-text);
+            padding: 10px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 15px;
+            width: 450px;
+            height: 450px;
+            padding: 15px;
+            background-color: var(--grid-color);
+            border-radius: 6px;
+            position: relative;
+            touch-action: none;
+        }
+
+        .tile {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: 0.1s ease-in-out;
+            box-shadow: 0 0 30px 1px rgba(243, 215, 116, 0);
+        }
+
+        .empty-tile {
+            background-color: rgba(238, 228, 218, 0.35);
+        }
+
+        .tile-2 { background-color: var(--tile-2-bg); color: var(--dark-text); font-size: 2.5em; }
+        .tile-4 { background-color: var(--tile-4-bg); color: var(--dark-text); font-size: 2.5em; }
+        .tile-8 { background-color: var(--tile-8-bg); color: var(--light-text); font-size: 2.5em; }
+        .tile-16 { background-color: var(--tile-16-bg); color: var(--light-text); font-size: 2.5em; }
+        .tile-32 { background-color: var(--tile-32-bg); color: var(--light-text); font-size: 2.5em; }
+        .tile-64 { background-color: var(--tile-64-bg); color: var(--light-text); font-size: 2.5em; }
+        .tile-128 { background-color: var(--tile-128-bg); color: var(--light-text); font-size: 2.0em; }
+        .tile-256 { background-color: var(--tile-256-bg); color: var(--light-text); font-size: 2.0em; }
+        .tile-512 { background-color: var(--tile-512-bg); color: var(--light-text); font-size: 2.0em; }
+        .tile-1024 { background-color: var(--tile-1024-bg); color: var(--light-text); font-size: 1.5em; }
+        .tile-2048 { background-color: var(--tile-2048-bg); color: var(--light-text); font-size: 1.5em; }
+        .tile-4096, .tile-8192, .tile-16384 { background-color: #3c3a32; color: var(--light-text); font-size: 1.2em; }
+
+        @media (max-width: 600px) {
+            #game-board {
+                width: 300px;
+                height: 300px;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .tile {
+                font-size: 1.8em;
+            }
+            .tile-128, .tile-256, .tile-512 { font-size: 1.6em; }
+            .tile-1024, .tile-2048 { font-size: 1.2em; }
+        }
+
+        .game-message {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            z-index: 10;
+            border-radius: 6px;
+        }
+
+        .game-message button {
+            padding: 10px 20px;
+            margin-top: 15px;
+            font-size: 0.7em;
+            cursor: pointer;
+            background-color: var(--tile-8-bg);
+            color: var(--light-text);
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>2048</h1>
+    <div class="score-container">
+        Score: <span id="score">0</span>
+    </div>
+
+    <div id="game-board">
+        <div class="game-message" id="game-over-message">
+            Game Over!
+            <button onclick="startGame()">Try Again</button>
+        </div>
+    </div>
+
+    <script>
+        const GRID_SIZE = 4;
+        const board = [];
+        let score = 0;
+        let gameActive = true;
+        let startX, startY;
+
+        const gameBoardElement = document.getElementById('game-board');
+        const scoreElement = document.getElementById('score');
+        const gameOverMessage = document.getElementById('game-over-message');
+
+        function startGame() {
+            board.length = 0;
+            for (let i = 0; i < GRID_SIZE; i++) {
+                board.push(new Array(GRID_SIZE).fill(0));
+            }
+            score = 0;
+            gameActive = true;
+            gameOverMessage.style.display = 'none';
+            scoreElement.textContent = score;
+
+            addRandomTile();
+            addRandomTile();
+            drawBoard();
+        }
+
+        function addRandomTile() {
+            const emptyCells = [];
+            for (let r = 0; r < GRID_SIZE; r++) {
+                for (let c = 0; c < GRID_SIZE; c++) {
+                    if (board[r][c] === 0) {
+                        emptyCells.push({ r, c });
+                    }
+                }
+            }
+
+            if (emptyCells.length > 0) {
+                const cell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                board[cell.r][cell.c] = Math.random() < 0.9 ? 2 : 4;
+            }
+        }
+
+        function drawBoard() {
+            gameBoardElement.innerHTML = '';
+            gameBoardElement.appendChild(gameOverMessage); 
+
+            for (let r = 0; r < GRID_SIZE; r++) {
+                for (let c = 0; c < GRID_SIZE; c++) {
+                    const value = board[r][c];
+                    const tile = document.createElement('div');
+                    tile.classList.add('tile');
+
+                    if (value === 0) {
+                        tile.classList.add('empty-tile');
+                    } else {
+                        tile.textContent = value;
+                        tile.classList.add(\`tile-\${value > 2048 ? 4096 : value}\`);
+                    }
+
+                    gameBoardElement.appendChild(tile);
+                }
+            }
+        }
+
+        function slide(rowOrCol) {
+            let arr = rowOrCol.filter(val => val !== 0);
+            while (arr.length < GRID_SIZE) {
+                arr.push(0);
+            }
+            return arr;
+        }
+
+        function combine(rowOrCol) {
+            for (let i = 0; i < GRID_SIZE - 1; i++) {
+                if (rowOrCol[i] !== 0 && rowOrCol[i] === rowOrCol[i + 1]) {
+                    const combinedValue = rowOrCol[i] * 2;
+                    rowOrCol[i] = combinedValue;
+                    rowOrCol[i + 1] = 0;
+                    score += combinedValue;
+                    i++;
+                }
+            }
+            return rowOrCol;
+        }
+
+        function moveLine(line) {
+            line = slide(line);
+            line = combine(line);
+            line = slide(line);
+            return line;
+        }
+
+        function move(direction) {
+            if (!gameActive) return;
+
+            let boardChanged = false;
+            const getCol = (c) => board.map(row => row[c]);
+            const setCol = (c, col) => col.forEach((val, r) => board[r][c] = val);
+            const originalBoard = JSON.parse(JSON.stringify(board)); 
+
+            for (let i = 0; i < GRID_SIZE; i++) {
+                let line;
+
+                if (direction === 'left' || direction === 'right') {
+                    line = board[i];
+                } else {
+                    line = getCol(i);
+                }
+
+                if (direction === 'right' || direction === 'down') {
+                    line.reverse();
+                }
+
+                const newLine = moveLine(line);
+
+                if (direction === 'right' || direction === 'down') {
+                    newLine.reverse();
+                }
+
+                if (direction === 'left' || direction === 'right') {
+                    board[i] = newLine;
+                } else {
+                    setCol(i, newLine);
+                }
+            }
+            
+            for (let r = 0; r < GRID_SIZE; r++) {
+                for (let c = 0; c < GRID_SIZE; c++) {
+                    if (originalBoard[r][c] !== board[r][c]) {
+                        boardChanged = true;
+                        break;
+                    }
+                }
+                if (boardChanged) break;
+            }
+
+            if (boardChanged) {
+                addRandomTile();
+                drawBoard();
+                scoreElement.textContent = score;
+                checkGameOver();
+            }
+        }
+
+        function hasEmptySpaces() {
+            return board.some(row => row.includes(0));
+        }
+
+        function canMerge() {
+            for (let r = 0; r < GRID_SIZE; r++) {
+                for (let c = 0; c < GRID_SIZE - 1; c++) {
+                    if (board[r][c] !== 0 && board[r][c] === board[r][c + 1]) {
+                        return true;
+                    }
+                }
+            }
+            for (let c = 0; c < GRID_SIZE; c++) {
+                for (let r = 0; r < GRID_SIZE - 1; r++) {
+                    if (board[r][c] !== 0 && board[r][c] === board[r + 1][c]) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        function checkGameOver() {
+            if (!hasEmptySpaces() && !canMerge()) {
+                gameActive = false;
+                gameOverMessage.style.display = 'flex';
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            switch (e.key) {
+                case 'ArrowUp':
+                    e.preventDefault();
+                    move('up');
+                    break;
+                case 'ArrowDown':
+                    e.preventDefault();
+                    move('down');
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    move('left');
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    move('right');
+                    break;
+            }
+        });
+
+        gameBoardElement.addEventListener('touchstart', (e) => {
+            if (!gameActive) return;
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            e.preventDefault();
+        }, false);
+
+        gameBoardElement.addEventListener('touchend', (e) => {
+            if (!gameActive) return;
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+
+            const diffX = endX - startX;
+            const diffY = endY - startY;
+
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (Math.abs(diffX) > 30) {
+                    move(diffX > 0 ? 'right' : 'left');
+                }
+            } else {
+                if (Math.abs(diffY) > 30) {
+                    move(diffY > 0 ? 'down' : 'up');
+                }
+            }
+            e.preventDefault();
+        }, false);
+
+        startGame();
+    <\/script>
+
+</body>
+</html>`
+      },
+
+      // 3. YOUR EXACT "Dino Game.html"
+      dino: {
+        title: "Dino Runner",
+        html: `<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Dino Run</title>
+</head>
+<body>
+
+    <div id="game-container">
+        <h1>Dino Runner</h1>
+        <canvas id="gameCanvas" width="600" height="150"></canvas>
+        <p>Press **SPACE** or **UP Arrow** to jump.</p>
+        <div id="score">Score: 0</div>
+    </div>
+
+<style>
+body {
+    font-family: monospace;
+    text-align: center;
+    background-color: #f7f7f7;
+    padding-top: 20px;
+}
+#gameCanvas {
+    background: #ffffff;
+    border-bottom: 3px solid #333;
+    display: block;
+    margin: 10px auto;
+}
+#score {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+</style>
+
+<script>
+window.onload = function() {
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scoreDisplay = document.getElementById('score');
+
+    let gameSpeed = 5;
+    let score = 0;
+    let gameOver = false;
+    let animationFrameId;
+
+    const dino = {
+        x: 50,
+        y: canvas.height - 30,
+        width: 20,
+        height: 30,
+        color: '#555555',
+        dy: 0,
+        gravity: 0.5,
+        jumpPower: 10,
+        onGround: true
+    };
+    const groundY = canvas.height - dino.height;
+
+    let obstacles = [];
+    const obstacleSpawnRate = 120;
+    let frameCount = 0;
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    function handleKeyDown(e) {
+        if ((e.code === 'Space' || e.code === 'ArrowUp') && dino.onGround && !gameOver) {
+            dino.dy = -dino.jumpPower;
+            dino.onGround = false;
+        }
+        if (gameOver && e.code === 'Space') {
+            resetGame();
+        }
+    }
+
+    function drawDino() {
+        ctx.fillStyle = dino.color;
+        ctx.fillRect(dino.x, dino.y, dino.width, dino.height);
+    }
+
+    function drawObstacles() {
+        ctx.fillStyle = '#FF4500';
+        obstacles.forEach(obstacle => {
+            ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+        });
+    }
+
+    function updateDino() {
+        if (!dino.onGround) {
+            dino.dy += dino.gravity;
+            dino.y += dino.dy;
+        }
+
+        if (dino.y >= groundY) {
+            dino.y = groundY;
+            dino.onGround = true;
+            dino.dy = 0;
+        }
+    }
+
+    function spawnObstacle() {
+        const width = 10 + Math.random() * 15;
+        const height = 20 + Math.random() * 10;
+        const newObstacle = {
+            x: canvas.width,
+            y: canvas.height - height,
+            width: width,
+            height: height
+        };
+        obstacles.push(newObstacle);
+    }
+
+    function updateObstacles() {
+        obstacles.forEach(obstacle => {
+            obstacle.x -= gameSpeed;
+        });
+
+        obstacles = obstacles.filter(obstacle => obstacle.x + obstacle.width > 0);
+        
+        if (frameCount % obstacleSpawnRate === 0) {
+            spawnObstacle();
+        }
+    }
+
+    function checkCollision() {
+        for (const obstacle of obstacles) {
+            if (
+                dino.x < obstacle.x + obstacle.width &&
+                dino.x + dino.width > obstacle.x &&
+                dino.y < obstacle.y + obstacle.height &&
+                dino.y + dino.height > obstacle.y
+            ) {
+                endGame();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function updateScore() {
+        score += 1;
+        scoreDisplay.textContent = \`Score: \${Math.floor(score / 10)}\`;
+        
+        if (score % 1000 === 0) {
+            gameSpeed += 0.5;
+        }
+    }
+
+    function endGame() {
+        gameOver = true;
+        cancelAnimationFrame(animationFrameId);
+        ctx.font = '30px monospace';
+        ctx.fillStyle = '#333';
+        ctx.fillText('GAME OVER! Press SPACE to restart.', canvas.width / 2 - 250, canvas.height / 2);
+    }
+    
+    function resetGame() {
+        gameOver = false;
+        score = 0;
+        gameSpeed = 5;
+        obstacles = [];
+        frameCount = 0;
+        dino.y = groundY;
+        dino.onGround = true;
+        dino.dy = 0;
+        gameLoop();
+    }
+
+    function gameLoop() {
+        if (gameOver) return;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        updateDino();
+        updateObstacles();
+        updateScore();
+        
+        if (checkCollision()) {
+            return;
+        }
+
+        drawDino();
+        drawObstacles();
+
+        frameCount++;
+        animationFrameId = requestAnimationFrame(gameLoop);
+    }
+    
+    gameLoop();
+};
+<\/script>
+
+</body>
+</html>`
+      },
+
+      // 4. YOUR EXACT "FLAPPY BALL.html"
+      flappy: {
+        title: "Flappy Ball",
+        html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Flappy Clone (Easy Mode)</title>
+    
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: sans-serif;
+        }
+
+        #game-container {
+            position: relative;
+            border: 3px solid #333;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #gameCanvas {
+            background-color: #70c5ce;
+            display: block;
+        }
+
+        #start-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 20;
+        }
+
+        #startButton {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        #score-display {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas" width="400" height="600"></canvas>
+        
+        <div id="start-screen">
+            <h1>Flappy Clone (Easy Mode)</h1>
+            <p>Press **SPACE** or **click** to start and flap!</p>
+            <button id="startButton">Start Game</button>
+        </div>
+        
+        <div id="score-display">Score: 0</div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const startButton = document.getElementById('startButton');
+        const startScreen = document.getElementById('start-screen');
+        const scoreDisplay = document.getElementById('score-display');
+
+        let gameStarted = false;
+        let gameLoopInterval;
+
+        const bird = {
+            x: 50,
+            y: canvas.height / 2,
+            radius: 15,
+            velocity: 0,
+            gravity: 0.4,
+            lift: -8,
+            draw() {
+                ctx.fillStyle = 'yellow';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = 'black';
+                ctx.stroke();
+            },
+            update() {
+                this.velocity += this.gravity;
+                this.y += this.velocity;
+            },
+            flap() {
+                this.velocity = this.lift;
+            }
+        };
+
+        const pipeWidth = 50;
+        const pipeGap = 200;
+        const pipeSpeed = 1.5;
+        let pipes = [];
+        let score = 0;
+        let frameCount = 0;
+
+        function createPipe() {
+            const topPipeHeight = Math.random() * (canvas.height - 250 - pipeGap) + 50;
+            
+            pipes.push({
+                x: canvas.width,
+                yTop: 0,
+                heightTop: topPipeHeight,
+                yBottom: topPipeHeight + pipeGap,
+                heightBottom: canvas.height - topPipeHeight - pipeGap,
+                passed: false
+            });
+        }
+
+        function drawPipes() {
+            ctx.fillStyle = 'green';
+            pipes.forEach(p => {
+                ctx.fillRect(p.x, p.yTop, pipeWidth, p.heightTop);
+                ctx.fillRect(p.x, p.yBottom, pipeWidth, p.heightBottom);
+            });
+        }
+
+        function updatePipes() {
+            pipes.forEach(p => {
+                p.x -= pipeSpeed;
+            });
+
+            pipes = pipes.filter(p => p.x + pipeWidth > 0);
+
+            if (frameCount % 120 === 0) {
+                createPipe();
+            }
+        }
+
+        function checkCollision() {
+            if (bird.y + bird.radius > canvas.height || bird.y - bird.radius < 0) {
+                return true;
+            }
+
+            for (let i = 0; i < pipes.length; i++) {
+                const p = pipes[i];
+                
+                if (bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + pipeWidth) {
+                    if (bird.y - bird.radius < p.heightTop || bird.y + bird.radius > p.yBottom) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        function updateScore() {
+            pipes.forEach(p => {
+                if (!p.passed && p.x + pipeWidth < bird.x) {
+                    score++;
+                    p.passed = true;
+                    scoreDisplay.textContent = \`Score: \${score}\`;
+                }
+            });
+        }
+
+        function gameLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            updatePipes();
+            drawPipes();
+            bird.update();
+            bird.draw();
+            
+            if (checkCollision()) {
+                gameOver();
+                return;
+            }
+
+            updateScore();
+
+            frameCount++;
+            gameLoopInterval = requestAnimationFrame(gameLoop);
+        }
+
+        function startGame() {
+            if (gameStarted) return;
+            
+            gameStarted = true;
+            score = 0;
+            pipes = [];
+            bird.y = canvas.height / 2;
+            bird.velocity = 0;
+            scoreDisplay.textContent = 'Score: 0';
+
+            startScreen.style.display = 'none';
+            
+            createPipe();
+            gameLoopInterval = requestAnimationFrame(gameLoop);
+        }
+
+        function gameOver() {
+            cancelAnimationFrame(gameLoopInterval);
+            gameStarted = false;
+            
+            startScreen.querySelector('h1').textContent = 'Game Over!';
+            startScreen.querySelector('p').innerHTML = \`Final Score: **\${score}**<br>Press **Start** to try again!\`;
+            startScreen.style.display = 'flex';
+        }
+
+        function handleInput(event) {
+            if (gameStarted) {
+                if (event.code === 'Space' || event.type === 'mousedown') {
+                    bird.flap();
+                }
+            }
+        }
+
+        startButton.addEventListener('click', startGame);
+        document.addEventListener('keydown', handleInput);
+        canvas.addEventListener('mousedown', handleInput); 
+    <\/script>
+</body>
+</html>`
+      },
+
+      // 5. YOUR EXACT "HAMSTER GAME.html"
+      hamster: {
+        title: "Whack-A-Mole",
+        html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3x3 Whack-A-Mole</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #e0f7fa;
+            font-family: 'Arial', sans-serif;
+            flex-direction: column;
+        }
+
+        #game-container {
+            text-align: center;
+            background-color: #4caf50;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #score-board {
+            display: flex;
+            justify-content: space-around;
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        #game-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 10px;
+            background-color: #388e3c;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .hole {
+            width: 100px;
+            height: 100px;
+            background-color: #a1887f;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 3px solid #795548;
+        }
+
+        .mole {
+            width: 80px;
+            height: 80px;
+            background-color: #795548;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -85px;
+            transition: bottom 0.2s ease-in-out;
+            pointer-events: none;
+        }
+        
+        .hole.up .mole {
+            bottom: 0;
+            background-color: #ff5722;
+        }
+
+        .key-label {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2px 5px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        #start-button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #ffeb3b;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        #message {
+            color: #333;
+            font-size: 1.2em;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Whack-A-Mole</h1>
+        
+        <div id="score-board">
+            <div id="score-display">Score: 0</div>
+            <div id="time-display">Time: 30s</div>
+        </div>
+
+        <div id="game-grid">
+            </div>
+
+        <button id="start-button">Start Game</button>
+        <p id="message">Use number keys 1 through 9 to tap the moles!</p>
+    </div>
+
+    <script>
+        const gameGrid = document.getElementById('game-grid');
+        const scoreDisplay = document.getElementById('score-display');
+        const timeDisplay = document.getElementById('time-display');
+        const startButton = document.getElementById('start-button');
+        const message = document.getElementById('message');
+
+        let score = 0;
+        let timeRemaining = 30;
+        let gameActive = false;
+        let lastHoleIndex = -1;
+        let popUpTimer;
+        let countdownTimer;
+
+        const gameDuration = 30;
+        const popUpMinTime = 800;
+        const popUpMaxTime = 1500;
+
+        function setupGrid() {
+            gameGrid.innerHTML = '';
+            for (let i = 0; i < 9; i++) {
+                const hole = document.createElement('div');
+                hole.classList.add('hole');
+                hole.setAttribute('data-index', i + 1);
+                
+                const mole = document.createElement('div');
+                mole.classList.add('mole');
+                
+                const keyLabel = document.createElement('span');
+                keyLabel.classList.add('key-label');
+                keyLabel.textContent = i + 1;
+
+                hole.appendChild(mole);
+                hole.appendChild(keyLabel);
+                gameGrid.appendChild(hole);
+            }
+        }
+
+        function getRandomHoleIndex() {
+            const holes = document.querySelectorAll('.hole');
+            let randomIndex;
+            
+            do {
+                randomIndex = Math.floor(Math.random() * holes.length);
+            } while (randomIndex === lastHoleIndex);
+
+            lastHoleIndex = randomIndex;
+            return randomIndex;
+        }
+
+        function popUpMole() {
+            const activeHole = document.querySelector('.hole.up');
+            if (activeHole) {
+                activeHole.classList.remove('up');
+            }
+
+            const newIndex = getRandomHoleIndex();
+            const newHole = document.querySelectorAll('.hole')[newIndex];
+            newHole.classList.add('up');
+            
+            const popTime = Math.random() * (popUpMaxTime - popUpMinTime) + popUpMinTime;
+            popUpTimer = setTimeout(popUpMole, popTime);
+        }
+
+        function whack(holeElement) {
+            if (!gameActive) return;
+
+            if (holeElement.classList.contains('up')) {
+                score++;
+                scoreDisplay.textContent = \`Score: \${score}\`;
+                
+                holeElement.classList.remove('up');
+                
+                clearTimeout(popUpTimer);
+                popUpMole();
+            }
+        }
+
+        function updateTimer() {
+            timeRemaining--;
+            timeDisplay.textContent = \`Time: \${timeRemaining}s\`;
+
+            if (timeRemaining <= 0) {
+                gameOver();
+            }
+        }
+
+        function startGame() {
+            if (gameActive) return;
+
+            score = 0;
+            timeRemaining = gameDuration;
+            gameActive = true;
+            scoreDisplay.textContent = 'Score: 0';
+            timeDisplay.textContent = \`Time: \${gameDuration}s\`;
+            startButton.textContent = 'Game In Progress...';
+            startButton.disabled = true;
+            message.textContent = 'WHACK! WHACK! WHACK!';
+
+            clearTimeout(popUpTimer);
+            clearInterval(countdownTimer);
+
+            countdownTimer = setInterval(updateTimer, 1000);
+            popUpMole();
+        }
+
+        function gameOver() {
+            gameActive = false;
+            clearInterval(countdownTimer);
+            clearTimeout(popUpTimer);
+            
+            const activeHole = document.querySelector('.hole.up');
+            if (activeHole) {
+                activeHole.classList.remove('up');
+            }
+
+            startButton.textContent = 'Play Again';
+            startButton.disabled = false;
+            message.textContent = \`Game Over! Final Score: \${score}\`;
+        }
+        
+        document.addEventListener('keydown', (event) => {
+            if (!gameActive) return;
+            
+            if (event.key >= '1' && event.key <= '9') {
+                const targetKey = event.key;
+                const hole = document.querySelector(\`.hole[data-index="\${targetKey}"]\`);
+                
+                if (hole) {
+                    whack(hole);
+                }
+            }
+        });
+        
+        gameGrid.addEventListener('click', (event) => {
+            if (!gameActive) return;
+            let target = event.target;
+            
+            while (target && !target.classList.contains('hole')) {
+                target = target.parentNode;
+            }
+            
+            if (target && target.classList.contains('hole')) {
+                whack(target);
+            }
+        });
+
+        setupGrid();
+        startButton.addEventListener('click', startGame);
+    <\/script>
+</body>
+</html>`
+      },
+
+      // 6. YOUR EXACT "NIM_GAME.html"
+      nim: {
+        title: "NIM GAME",
+        html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIM GAME{derived from python}</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --player-color: #38bdf8;
+            --ai-color: #fb7185;
+            --stick-active: #94a3b8;
+            --stick-removed: #334155;
+            --text-main: #f1f5f9;
+        }
+
+        body, html { 
+            margin: 0; padding: 0; 
+            background-color: var(--bg-color); 
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #landing-page {
+            text-align: center;
+            max-width: 550px;
+            padding: 50px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid #334155;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .diff-container {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .diff-btn {
+            padding: 12px 20px;
+            border: 1px solid #475569;
+            background: transparent;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .diff-btn.active {
+            background: var(--player-color);
+            border-color: var(--player-color);
+            color: var(--bg-color);
+        }
+
+        #game-stage { 
+            display: none; 
+            flex-direction: column; 
+            align-items: center; 
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        .status-box {
+            background: var(--card-bg);
+            padding: 20px 40px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border: 1px solid #334155;
+            min-width: 350px;
+            text-align: center;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        }
+
+        .sticks-container {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            border: 1px solid #334155;
+        }
+
+        .row { display: flex; align-items: center; gap: 20px; }
+        .row-label { width: 70px; color: #64748b; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; }
+        .sticks-row { display: flex; gap: 8px; }
+
+        .stick {
+            width: 14px; height: 55px;
+            background: var(--stick-active);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .stick:hover { 
+            background: var(--player-color); 
+            transform: translateY(-10px); 
+            box-shadow: 0 0 20px var(--player-color); 
+        }
+
+        .stick.removed { 
+            background: var(--stick-removed); 
+            pointer-events: none; 
+            opacity: 0.1; 
+            transform: scale(0.2) rotate(45deg); 
+        }
+
+        .btn-start {
+            padding: 18px 50px;
+            background: var(--player-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 14px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-start:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.5); 
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .footer { margin-top: 40px; color: #475569; font-size: 0.8rem; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div id="landing-page">
+        <h1 style="font-size: 4rem; margin: 0; letter-spacing: -3px; color: var(--player-color);">NIM_OS</h1>
+        <p style="color: #94a3b8; margin-top: 10px;">Strategic Binary Logic Simulation</p>
+        
+        <div class="diff-container">
+            <button class="diff-btn active" id="hard-btn" onclick="setDifficulty(0)">PERFECT AI</button>
+            <button class="diff-btn" id="easy-btn" onclick="setDifficulty(1)">AMATEUR AI</button>
+        </div>
+
+        <button class="btn-start" onclick="beginGame()">Initialize</button>
+        <div class="footer">FOR EDUCATIONAL PURPOSES ONLY</div>
+    </div>
+
+    <div id="game-stage">
+        <div class="status-box" id="status-text">PREPARING INTERFACE...</div>
+        <div class="sticks-container" id="game-board"></div>
+        <button class="diff-btn" style="margin-top: 30px; border: none; opacity: 0.5;" onclick="location.reload()">[ REBOOT SYSTEM ]</button>
+    </div>
+
+    <script>
+        window.onload = function() {
+            let piles = [7, 11, 13];
+            let currentDifficulty = 0; 
+            let aiBusy = false;
+
+            window.setDifficulty = function(val) {
+                currentDifficulty = val;
+                document.getElementById('hard-btn').classList.toggle('active', val === 0);
+                document.getElementById('easy-btn').classList.toggle('active', val === 1);
+            };
+
+            window.beginGame = function() {
+                document.getElementById('landing-page').style.display = 'none';
+                document.getElementById('game-stage').style.display = 'flex';
+                updateStatus("YOUR TURN: SELECT A STICK TO REDUCE ROW");
+                drawBoard();
+            };
+
+            function drawBoard() {
+                const board = document.getElementById('game-board');
+                board.innerHTML = '';
+                piles.forEach((count, rIdx) => {
+                    const rowDiv = document.createElement('div');
+                    rowDiv.className = 'row';
+                    rowDiv.innerHTML = \`<div class="row-label">ROW \${rIdx+1}</div>\`;
+                    
+                    const sticksDiv = document.createElement('div');
+                    sticksDiv.className = 'sticks-row';
+                    
+                    for(let i=0; i<15; i++) {
+                        const stick = document.createElement('div');
+                        stick.className = 'stick' + (i >= count ? ' removed' : '');
+                        if(i < count) {
+                            stick.onclick = () => makeMove(rIdx, i);
+                        }
+                        sticksDiv.appendChild(stick);
+                    }
+                    rowDiv.appendChild(sticksDiv);
+                    board.appendChild(rowDiv);
+                });
+            }
+
+            function makeMove(rowIdx, stickIdx) {
+                if(aiBusy) return;
+                piles[rowIdx] = stickIdx;
+                drawBoard();
+                if(checkEnd("PLAYER")) return;
+                
+                aiBusy = true;
+                updateStatus("AI ANALYZING NIM-SUM...");
+                setTimeout(triggerAI, 1000);
+            }
+
+            function triggerAI() {
+                let xorSum = piles[0] ^ piles[1] ^ piles[2];
+                let r = -1, v = -1;
+
+                if(currentDifficulty === 1 && Math.random() > 0.6) {
+                    let options = piles.map((n, i) => n > 0 ? i : -1).filter(n => n !== -1);
+                    r = options[Math.floor(Math.random() * options.length)];
+                    v = Math.floor(Math.random() * piles[r]);
+                } else {
+                    if(xorSum === 0) {
+                        let options = piles.map((n, i) => n > 0 ? i : -1).filter(n => n !== -1);
+                        r = options[0]; v = piles[r] - 1;
+                    } else {
+                        for(let i=0; i<3; i++) {
+                            let target = piles[i] ^ xorSum;
+                            if(target < piles[i]) {
+                                r = i; v = target; break;
+                            }
+                        }
+                    }
+                }
+
+                piles[r] = v;
+                drawBoard();
+                if(checkEnd("AI")) return;
+                
+                aiBusy = false;
+                updateStatus("YOUR TURN");
+            }
+
+            function checkEnd(who) {
+                if(piles.every(n => n === 0)) {
+                    updateStatus(who === "PLAYER" ? "SYSTEM BREACH: YOU WIN" : "CRITICAL ERROR: AI WINS");
+                    return true;
+                }
+                return false;
+            }
+
+            function updateStatus(msg) {
+                document.getElementById('status-text').innerText = msg;
+            }
+        };
+    <\/script>
+</body>
+</html>`
+      },
+
+      // 7. YOUR EXACT "tic-tac-toe html.html"
+      tictactoe: {
+        title: "Tic Tac Toe",
+        html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            width: 300px;
+            margin: 40px auto;
+        }
+        .cell {
+            background-color: #fff;
+            padding: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+        }
+        .cell:hover {
+            background-color: #ddd;
+        }
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .reset-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .reset-btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-board">
+        <button class="cell" id="cell-0"></button>
+        <button class="cell" id="cell-1"></button>
+        <button class="cell" id="cell-2"></button>
+        <button class="cell" id="cell-3"></button>
+        <button class="cell" id="cell-4"></button>
+        <button class="cell" id="cell-5"></button>
+        <button class="cell" id="cell-6"></button>
+        <button class="cell" id="cell-7"></button>
+        <button class="cell" id="cell-8"></button>
+    </div>
+    <div class="result" id="result"></div>
+    <button class="reset-btn" id="reset-btn">Reset</button>
+
+    <script>
+        let currentPlayer = 'X';
+        let gameBoard = ['', '', '', '', '', '', '', '', ''];
+        let gameOver = false;
+
+        const cells = document.querySelectorAll('.cell');
+        const resultDiv = document.getElementById('result');
+        const resetBtn = document.getElementById('reset-btn');
+
+        cells.forEach((cell, index) => {
+            cell.addEventListener('click', () => {
+                if (gameOver) return;
+                if (gameBoard[index] !== '') return;
+                gameBoard[index] = currentPlayer;
+                cell.textContent = currentPlayer;
+                checkWin();
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            });
+        });
+
+        resetBtn.addEventListener('click', () => {
+            gameOver = false;
+            currentPlayer = 'X';
+            gameBoard = ['', '', '', '', '', '', '', '', ''];
+            cells.forEach(cell => cell.textContent = '');
+            resultDiv.textContent = '';
+        });
+
+        function checkWin() {
+            const winConditions = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+
+            for (const condition of winConditions) {
+                if (gameBoard[condition[0]] === gameBoard[condition[1]] && gameBoard[condition[1]] === gameBoard[condition[2]] && gameBoard[condition[0]] !== '') {
+                    resultDiv.textContent = \`Player \${gameBoard[condition[0]]} wins!\`;
+                    gameOver = true;
+                    return;
+                }
+            }
+
+            if (!gameBoard.includes('')) {
+                resultDiv.textContent = 'It\\'s a tie!';
+                gameOver = true;
+            }
+        }
+    <\/script>
+</body>
+</html>`
+      }
+    };
+
+    function openGame(key) {
+      const game = gamesData[key];
+      if (!game) return;
+
+      document.getElementById('landing-view').style.display = 'none';
+      const arena = document.getElementById('arena-view');
+      arena.style.display = 'flex';
+
+      document.getElementById('active-title').innerText = game.title;
+      
+      // Show password banner in arena bar only if playing the 3D car game
+      const passBanner = document.getElementById('car-pass-reminder');
+      if (game.isCar) {
+        passBanner.style.display = 'inline-block';
+      } else {
+        passBanner.style.display = 'none';
+      }
+
+      document.querySelectorAll('.switch-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-game') === key);
+      });
+
+      const frame = document.getElementById('game-frame');
+      frame.srcdoc = game.html;
+      window.scrollTo(0, 0);
+    }
+
+    function backToHub() {
+      const frame = document.getElementById('game-frame');
+      frame.srcdoc = ''; // Stops all loops & WebGL instances
+
+      document.getElementById('arena-view').style.display = 'none';
+      document.getElementById('landing-view').style.display = 'flex';
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>
